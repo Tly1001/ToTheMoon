@@ -1,0 +1,13 @@
+{
+  "name": "ToTheMoon",
+  "version": "1.0.0",
+  "description": "Cryptocurrency Trading App",
+  "main": "index.js",
+  "repository": "git@github.com:Tly1001/ToTheMoon.git",
+  "author": "Peter Wallace <peterwallace@hotmail.co.uk> and Thomas Ly <thomasly1001@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.17.1",
+    "express-generator": "^4.16.1"
+  }
+}

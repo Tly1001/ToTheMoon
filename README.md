@@ -20,3 +20,5 @@ Tech stack:
 API:
 Coingeko:
 https://www.coingecko.com/en
+
+Authors: Thomas Ly, Peter Wallace.

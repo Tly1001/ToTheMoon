@@ -27,7 +27,8 @@ app.use('/user', userRouter)
 app.use('/', indexRouter)
 
 // connect to mongoDB
-// const uri = process.env.ATLAS_URI; // URI FROM ATLAS NEEDS TO BE ADDED TO .ENV
+//TODO URI FROM ATLAS NEEDS TO BE ADDED TO .ENV
+// const uri = process.env.ATLAS_URI; 
 // mongoose.connect(uri, { useNewParser: true, useCreateIndex: true})
 
 // const connection = mongoose.connection

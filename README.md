@@ -21,4 +21,16 @@ API:
 Coingeko:
 https://www.coingecko.com/en
 
+Todo:
+- Setup backend to:
+  - register and login and update last login time
+  - add cash to user
+  - purchase with cash
+  - give portfolio data
+
+- Create MongoDB
+
+- Frontend
+ 
+
 Authors: Thomas Ly, Peter Wallace.

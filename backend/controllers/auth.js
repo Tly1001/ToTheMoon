@@ -22,7 +22,7 @@ async function login(req, res) {
 }
 
 // POST new user
-//TODO testing: missing portfolio on creation
+//TODO testing: check if has default mula
 async function register(req, res) {
   try {
     const user = await User.create(req.body)

@@ -2,23 +2,20 @@ const router = require('express').Router()
 const User = require('../models/user.model')
 
 // GET user data 
-//TODO change to feed back specific info, not sure what info yet
-
-router.get('/:id', (req, res) => {
-  User.findById(req.params.id)
-    // .then(users => res.json(users))
-    .catch(err => res.status(400).json('Error: ' + err))
-})
-
-
-
-  newUser.save()
-    .then(() => res.json('User registered!'))
-    .catch(err => res.status(400).json('Error: ' + err))
-})
+//TODO test
+async function showInfo(req, res) {
+  try {
+    const user = await User.findById(req.params.id)
+    if (!user) throw new Error()
+    user.password = null
+    res.status(200).json(user)
+  } catch (err) {
+    res.status(404).json({ 'Message': 'Not Found ' + err })
+  }
+}
 
 // PUT update User
-//TODO need to look into the schema again, maybe move bookmarks, cash and portfolio into one property?
+//TODO convert and put into try catch
 router.put('/update/:id', (req, res) => {
   User.findById(req.params.id)
     .then( user => {
@@ -36,10 +33,6 @@ router.put('/update/:id', (req, res) => {
     })
     .catch( err => res.status(400).json('Error: ' + err))
 })
-
-// Delete User?
-
-
 
 
 module.exports = router

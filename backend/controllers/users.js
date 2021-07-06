@@ -3,21 +3,14 @@ const User = require('../models/user.model')
 
 // GET user data 
 //TODO change to feed back specific info, not sure what info yet
+
 router.get('/:id', (req, res) => {
   User.findById(req.params.id)
-    .then(users => res.json(users))
+    // .then(users => res.json(users))
     .catch(err => res.status(400).json('Error: ' + err))
 })
 
-// POST new user
-router.post('/register', (req, res) => {
-  const firstName = req.body.firstName
-  const lastName = req.body.lastName
 
-  const newUser = new User({ 
-    firstName, 
-    lastName 
-  })
 
   newUser.save()
     .then(() => res.json('User registered!'))
@@ -29,10 +22,10 @@ router.post('/register', (req, res) => {
 router.put('/update/:id', (req, res) => {
   User.findById(req.params.id)
     .then( user => {
+      user.email = req.body.email
       user.firstName = req.body.firstName
       user.lastName = req.body.lastName
       user.password = req.body.password
-      user.birthday = req.body.birthday
       user.bookmarks = req.body.bookmarks
       user.cash = req.body.cash
       user.portfolio = req.body.portfolio
@@ -45,6 +38,8 @@ router.put('/update/:id', (req, res) => {
 })
 
 // Delete User?
+
+
 
 
 module.exports = router

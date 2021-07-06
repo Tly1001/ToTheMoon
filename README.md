@@ -31,6 +31,10 @@ Todo:
 - Create MongoDB
 
 - Frontend
- 
+
+ stretch goals:
+ - birthday registry and age validation
+ - crypto to cryto trading
+
 
 Authors: Thomas Ly, Peter Wallace.

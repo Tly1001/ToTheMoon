@@ -1,10 +1,6 @@
 const router = require('express').Router()
 const auth = require('./controllers/auth')
-const User = require('./models/user.model')
-
-
-
-
+// const User = require('./models/user.model')
 
 
 // auth
@@ -17,4 +13,7 @@ router.route('/login')
 
 // users
 
-router.route()
+// router.route()
+//   .get(users.id)
+
+module.exports = router

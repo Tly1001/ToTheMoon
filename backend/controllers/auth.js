@@ -1,7 +1,7 @@
-//GET login user
-const User = require('../models/user')
+const User = require('../models/user.model')
 // const jwt = require('jsonwebtoken')
 
+//POST login user (tested)
 async function login(req, res) {
   try {
     // * find the user by their email
@@ -13,30 +13,23 @@ async function login(req, res) {
     
     // * send the token to them in response
     res.status(202).json({ 
-      message: `Welcome back ${user.firstName}`,
+      message: `Welcome back ${user.firstName}`
     })
 
   } catch (err) {
-    res.status(401).json({ message: 'Unauthorized' })
+    res.status(401).json({ message: 'Unauthorized ' + err })
   }
 }
 
 // POST new user
-//TODO test
-async function register(req, res) => {
-  const email = req.body.email
-  const firstName = req.body.firstName
-  const lastName = req.body.lastName
-  const password = req.body.password
+//TODO testing: missing portfolio on creation
+async function register(req, res) {
+  try {
+    const user = await User.create(req.body)
+    res.status(201).json({ message: ` Welcome ${user.firstName}` })
+  } catch (err) {
+    res.status(422).json(err)
+  }
+}
 
-  const newUser = new User({ 
-    email,
-    firstName, 
-    lastName,
-    password,
-    bookmarks: [],
-    portfolio: {
-      wallet: {},
-      transactions: {}
-    }
-  })}
+module.exports = { register, login }

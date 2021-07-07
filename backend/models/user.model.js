@@ -36,6 +36,10 @@ const userSchema = new Schema({
     wallet: { type: Object },
     transactions: [{
       currencyCode: { type: String },
+      type: {
+        type: String,
+        enum: ['buy', 'sell']
+      },
       amount: { type: Number },
       date: { type: Date }
     }]

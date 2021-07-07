@@ -1,6 +1,7 @@
 const router = require('express').Router()
 const auth = require('./controllers/auth')
-// const User = require('./models/user.model')
+const user = require('./controllers/user')
+const User = require('./models/user.model')
 
 
 // auth
@@ -13,7 +14,10 @@ router.route('/login')
 
 // users
 
-// router.route()
-//   .get(users.id)
+router.route('/user/update/:id')
+  .put(user.updateUser)
+
+router.route('/user/:id')
+  .get(user.getUser)
 
 module.exports = router

@@ -24,3 +24,6 @@ module.exports = router
 
 router.route('/purchase/:id')
   .put(transactions.purchase)
+
+router.route('/sell/:id')
+  .put(transactions.sell)

@@ -1,6 +1,6 @@
 const User = require('../models/user.model')
 
-// POST purchase
+// POST buy/sell
 // sample request {"token": "btc","amount": 500,"type": "buy"}
 //TODO need to change to find user with token
 //? maybe put into one function? very small variance

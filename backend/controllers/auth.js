@@ -21,11 +21,11 @@ async function login(req, res) {
   }
 }
 
-// POST new user
-//TODO testing: check if has default mula
+// POST new user (tested)
 async function register(req, res) {
   try {
-    const user = await User.create(req.body)
+    const freeMoney = { wallet: [{ currencyCode: 'gbp' , amount: 10000 }] }
+    const user = await User.create({ ...req.body, portfolio: freeMoney })
     res.status(201).json({ message: ` Welcome ${user.firstName}` })
   } catch (err) {
     res.status(422).json(err)

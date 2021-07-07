@@ -33,15 +33,15 @@ const userSchema = new Schema({
   },
   bookmarks: [String],
   portfolio: {
-    wallet: {
-      currencyCode: { type: String, default: 'gbp' },
-      amount: { type: Number, default: 10000 }
-    },
-    transactions: {
+    wallet: [{
+      currencyCode: { type: String },
+      amount: { type: Number }
+    }],
+    transactions: [{
       currencyCode: { type: String },
       amount: { type: Number },
       date: { type: Date }
-    }
+    }]
   }
 }, {
   timestamps: true

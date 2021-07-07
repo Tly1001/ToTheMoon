@@ -27,8 +27,9 @@ async function login(req, res) {
 // POST new user (tested)
 async function register(req, res) {
   try {
-    const freeMoney = { wallet: [{ currencyCode: 'gbp' , amount: 10000 }] }
+    const freeMoney = { wallet: { gbp: 10000 } }
     const user = await User.create({ ...req.body, portfolio: freeMoney })
+    console.log('this is user', user)
     res.status(201).json({ message: ` Welcome ${user.firstName}` })
   } catch (err) {
     res.status(422).json(err)

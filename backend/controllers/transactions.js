@@ -2,7 +2,6 @@ const User = require('../models/user.model')
 
 // POST purchase
 //TODO need to change to find user with token
-//TODO add transaction logic
 async function purchase(req, res) {
   try {
     const buyCode = 'btc'

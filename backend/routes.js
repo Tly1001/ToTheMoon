@@ -1,8 +1,6 @@
 const router = require('express').Router()
 const auth = require('./controllers/auth')
 const user = require('./controllers/user')
-const User = require('./models/user.model')
-
 
 // auth
 

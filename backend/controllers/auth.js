@@ -1,5 +1,5 @@
 const User = require('../models/user.model')
-// const jwt = require('jsonwebtoken')
+const jwt = require('jsonwebtoken')
 
 //POST login user (tested)
 async function login(req, res) {
@@ -8,12 +8,15 @@ async function login(req, res) {
     const user = await User.findOne({ email: req.body.email })
 
     // * if they dont exist or password doesnt match throw an error
-    if (!user || !user.validatePassword(req.body.password)) 
-      throw new Error()
-    
+    // if (!user || !user.validatePassword(req.body.password))
+    //   throw new Error()
+
+    const token = jwt.sign({ sub: user._id }, process.env.SECRET, { expiresIn: '7 days' })
+
     // * send the token to them in response
-    res.status(202).json({ 
-      message: `Welcome back ${user.firstName}`
+    res.status(202).json({
+      message: `Welcome back ${user.firstName}`,
+      token
     })
 
   } catch (err) {

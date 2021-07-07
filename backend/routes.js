@@ -2,6 +2,7 @@ const router = require('express').Router()
 const auth = require('./controllers/auth')
 const user = require('./controllers/user')
 const transactions = require('./controllers/transactions')
+const secureRoute = require('./lib/secureRoute')
 
 // auth
 
@@ -13,11 +14,9 @@ router.route('/login')
 
 // users
 
-router.route('/user/update/:id')
-  .put(user.updateUser)
-
 router.route('/user/:id')
   .get(user.getUser)
+  .put(secureRoute, user.updateUser)
 
 module.exports = router
 

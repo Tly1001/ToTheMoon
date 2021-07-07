@@ -14,7 +14,7 @@ Tech stack:
 - React.JS
 - Node.JS
 - Express
-- Postgres? SQL?
+- MongoDB
 - A data visualisation framework
 
 API:

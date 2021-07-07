@@ -18,9 +18,9 @@ async function getUser(req, res) {
 async function updateUser(req, res) {
   try {
     const user = await User.findById(req.params.id)
-    // Check if user exists
+    // * Check if user exists
     if (!user) throw new Error('User not found')
-    // Check if user is same as currentUser
+    // * Check if user is same as currentUser
     // if (!user.equals(req.currentUser._id)) throw new Error('Unauthorised')
     Object.assign(user, req.body)
     await user.save()

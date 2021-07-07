@@ -33,10 +33,7 @@ const userSchema = new Schema({
   },
   bookmarks: [String],
   portfolio: {
-    wallet: [{
-      currencyCode: { type: String },
-      amount: { type: Number }
-    }],
+    wallet: { type: Object },
     transactions: [{
       currencyCode: { type: String },
       amount: { type: Number },

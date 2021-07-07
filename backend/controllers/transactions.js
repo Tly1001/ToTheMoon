@@ -13,7 +13,9 @@ async function purchase(req, res) {
     const wallet = newUser.portfolio.wallet
     if (buyAmount > wallet.gbp) throw new Error()
 
+    // remove money
     wallet.gbp -= buyAmount 
+    // add crypto
     wallet[buyCode] = (wallet[buyCode] ? wallet[buyCode] + buyAmount : buyAmount)
 
     Object.assign(user, newUser)

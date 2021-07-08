@@ -6,6 +6,7 @@ async function login(req, res) {
   try {
     // * find the user by their email
     const user = await User.findOne({ email: req.body.email })
+    const lastLogin = user.updatedAt
 
     // * if they dont exist or password doesnt match throw an error
     // if (!user || !user.validatePassword(req.body.password))
@@ -16,6 +17,7 @@ async function login(req, res) {
     // * send the token to them in response
     res.status(202).json({
       message: `Welcome back ${user.firstName}`,
+      lastLogin,
       token
     })
 

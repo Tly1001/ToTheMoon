@@ -6,6 +6,23 @@ const validateEmail = (email) => {
   return re.test(email)
 }
 
+const transactionEntry = new Schema({
+  inCurrency: { 
+    code: { type: String, required: true },
+    amount: { type: Number, required: true } 
+  },
+  outCurrency: {  
+    code: { type: String, required: true },
+    amount: { type: Number, required: true } 
+  },
+  type: {
+    type: String,
+    enum: ['buy', 'sell']
+  },
+  cashValue: { type: Number },
+  date: { type: Date }
+})
+
 const userSchema = new Schema({
   email: {
     type: String,
@@ -34,15 +51,7 @@ const userSchema = new Schema({
   bookmarks: [String],
   portfolio: {
     wallet: { type: Object },
-    transactions: [{
-      currencyCode: { type: String },
-      type: {
-        type: String,
-        enum: ['buy', 'sell']
-      },
-      amount: { type: Number },
-      date: { type: Date }
-    }]
+    transactions: [transactionEntry]
   }
 }, {
   timestamps: true

@@ -1,14 +1,25 @@
 const User = require('../models/user.model')
 
 // POST buy/sell
-// sample request {"token": "btc","amount": 500,"type": "buy"}
+// sample request {
+// 	"inCurrency": {
+// 		"code": "btc",
+// 		"amount": 10
+// 	},
+// 	"outCurrency": {
+// 		"code": "gbp",
+// 		"amount": 10
+// 	},
+// 	"cashValue": 1,
+// 	"type": "buy"
+// }
 //TODO need to change to find user with token
-//? maybe put into one function? very small variance
 //? also maybe add cash value to transation history?
 async function transaction(req, res) {
   try {
-    const code = 'btc'
-    const amount = req.body.amount
+    const inCurrency = req.body.inCurrency
+    const outCurrency = req.body.outCurrency
+    const cashValue = req.body.cashValue
     const type = req.body.type
 
     const user = await User.findById(req.params.id)
@@ -19,25 +30,25 @@ async function transaction(req, res) {
 
     // buy
     if (type === 'buy') {
-      if (amount > wallet.gbp) throw new Error()
+      if (cashValue > wallet.gbp) throw new Error()
       // remove money
-      wallet.gbp -= amount 
+      wallet.gbp -= cashValue 
       // add crypto
-      wallet[code] = (wallet[code] ? wallet[code] + amount : amount)
+      wallet[inCurrency.code] = (wallet[inCurrency.code] ? wallet[inCurrency.code] + inCurrency.amount : inCurrency.amount)
     }
 
     // sell
     if (type === 'sell') {
-      if ( !wallet[code] || amount > wallet[code]) throw new Error()
+      if ( !wallet[outCurrency.code] || cashValue > wallet[outCurrency.code]) throw new Error()
       // add money
-      wallet.gbp += amount 
+      wallet.gbp += cashValue 
       // remove crypto
-      wallet[code] -= amount
+      wallet[outCurrency.code] -= outCurrency.amount
     }
 
     // transaction history
     const transactions = newUser.portfolio.transactions
-    const newEntry = createNewEntry(code, amount, type)
+    const newEntry = createNewEntry(inCurrency, outCurrency, type, cashValue)
     transactions.push(newEntry)
 
     // save to db
@@ -51,15 +62,16 @@ async function transaction(req, res) {
   }
 }
 
-function createNewEntry(code, amount, type) {
+function createNewEntry(inCurrency, outCurrency, type, cashValue ) {
   const date = new Date()
   const newEntry = {
-    currencyCode: code,
-    //TODO do we need this property or make the amount a minus for sell?
+    inCurrency: inCurrency,
+    outCurrency: outCurrency,
     type: type,
-    amount: amount,
+    cashValue: cashValue,
     date: date
   }
+  console.log('this is in new entry', newEntry)
   return newEntry
 }
 

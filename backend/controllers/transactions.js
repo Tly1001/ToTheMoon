@@ -37,7 +37,7 @@ async function transaction(req, res) {
 
     // transaction history
     const transactions = newUser.portfolio.transactions
-    const newEntry = createNewEntry(code, amount, type === 'buy')
+    const newEntry = createNewEntry(code, amount, type)
     transactions.push(newEntry)
 
     // save to db
@@ -51,12 +51,12 @@ async function transaction(req, res) {
   }
 }
 
-function createNewEntry(code, amount, isBuying) {
+function createNewEntry(code, amount, type) {
   const date = new Date()
   const newEntry = {
     currencyCode: code,
     //TODO do we need this property or make the amount a minus for sell?
-    type: isBuying ? 'buy' : 'sell',
+    type: type,
     amount: amount,
     date: date
   }

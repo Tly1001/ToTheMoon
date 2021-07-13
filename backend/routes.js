@@ -17,10 +17,10 @@ router.route('/login')
 router.route('/user/:id')
   .get(user.getUser)
   .put(secureRoute, user.updateUser)
-
-module.exports = router
-
+  
 // transactions
-
+  
 router.route('/transaction/:id')
   .put(transactions.transaction)
+  
+module.exports = router

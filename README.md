@@ -29,6 +29,12 @@ Color Pallet
 ![colour pallet](frontend/assets/colours.png)
 
 Todo:
+Pete:
+finish up disabled conditional
+include pw confirmation validation
+margin styling
+do the axios put
+
 - Setup backend to:
   - register and login and update last login time
   - give portfolio data

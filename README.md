@@ -21,16 +21,25 @@ API:
 Coingeko:
 https://www.coingecko.com/en
 
+Color Pallet
+- 191970 (Midnighht Blue)
+- FFFCF2 (Floral White)
+- 706F6F (Sonic Silver)
+
+![colour pallet](frontend/assets/colours.png)
+
 Todo:
 - Setup backend to:
   - register and login and update last login time
-  - add cash to user
-  - purchase with cash
   - give portfolio data
 
 - Create MongoDB
 
 - Frontend
+- Navbar
+- Registration
+- Login
+- Title
 
  stretch goals:
  - birthday registry and age validation

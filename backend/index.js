@@ -6,7 +6,7 @@ const router = require('./routes')
 
 const env = require('dotenv').config().parsed
 const app = express()
-const port = env.PORT || 8000
+const port = process.env.PORT || 8000
 
 // Middleware
 
@@ -16,7 +16,7 @@ app.use(express.urlencoded({ extended: false }))
 app.use(cookieParser())
 
 // connect to mongoDB
-mongoose.connect( env.ATLAS_URI, { useNewUrlParser: true, useUnifiedTopology: true, createIndexes: true })
+mongoose.connect( process.env.ATLAS_URI, { useNewUrlParser: true, useUnifiedTopology: true, createIndexes: true })
 mongoose.connection.once('open', () => console.log('MongoDB database connection established successfully'))
 
 app.use('/api', router)

@@ -1,4 +1,5 @@
 import React from 'react'
+// eslint-disable-next-line no-unused-vars
 import { Link, withRouter } from 'react-router-dom'
 
 import { makeStyles } from '@material-ui/core/styles'
@@ -31,9 +32,9 @@ const Navbar = () => {
             <MenuIcon />
           </IconButton>
           <Typography variant="h6" className={classes.title}>
-            <Link className="nav-item">To The Moon</Link>
+            <Link to="/" className="nav-item">To The Moon</Link>
           </Typography>
-          <Link className="nav-item nav-button">LOGIN</Link>
+          <Link to="/login" className="nav-item nav-button">LOGIN</Link>
           <Link to="/register" className="nav-item nav-button">REGISTER</Link>
         </Toolbar>
       </AppBar>

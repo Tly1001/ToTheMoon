@@ -30,10 +30,8 @@ Color Pallet
 
 Todo:
 Pete:
-finish up disabled conditional
-include pw confirmation validation
 margin styling
-do the axios put
+do the axios put - React hooks equivalent of props.history...
 
 - Setup backend to:
   - register and login and update last login time

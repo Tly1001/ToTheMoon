@@ -1,4 +1,5 @@
 import React from 'react'
+import { registerUser } from '../../lib/api'
 import { makeStyles } from '@material-ui/core/styles'
 import Box from '@material-ui/core/Box'
 import Button from '@material-ui/core/Button'
@@ -38,10 +39,27 @@ const Register = () => {
     setState(newState)
   }
 
-  const activating = (data) => {
-    Object.values(data)
-      // .map(val => !!val)
+  const isUnregistrable = () => {
+    // console.log('This is isRegistrable', !Object.values(state.formData)
+    //   .every(val => !!val === true))
+    return !Object.values(state.formData)
       .every(val => !!val === true)
+  }
+
+  const isUnequal = (data) => {
+    // console.log(!(data.password === data.passwordConfirmation))
+    return !(data.password === data.passwordConfirmation)
+  }
+
+  const handleSubmit = async event => {
+    event.preventDefault()
+    try {
+      await registerUser(state.formData)
+      // TODO find react hooks equivalent of line below:
+      // this.props.history.push('/login')
+    } catch (err) {
+      console.log(err)
+    }
   }
 
   return (
@@ -58,6 +76,7 @@ const Register = () => {
               Register
             </Typography>
             <form
+              onSubmit={handleSubmit}
               className={classes.root}
               style={{ display: 'flex', flexDirection: 'column' }}
               noValidate
@@ -65,40 +84,43 @@ const Register = () => {
             >
               <TextField
                 onChange={handleChange}
-                id="outlined-basic"
                 name="firstName"
                 label="First Name"
                 variant="outlined"
               />
               <TextField
                 onChange={handleChange}
-                id="outlined-basic"
                 name="lastName"
                 label="Last Name"
                 variant="outlined"
               />
               <TextField
                 onChange={handleChange}
-                id="outlined-basic"
+                type="email"
                 name="email"
                 label="Email"
                 variant="outlined"
               />
               <TextField
                 onChange={handleChange}
-                id="outlined-basic"
+                type="password"
                 name="password"
                 label="Password"
                 variant="outlined"
               />
               <TextField
                 onChange={handleChange}
-                id="outlined-basic"
+                type="password"
                 name="passwordConfirmation"
                 label="Confirm Password"
                 variant="outlined"
               />
-              <Button variant="contained" color="primary" type="submit" disabled={ !activating }>
+              <Button
+                variant="contained"
+                color="primary"
+                type="submit"
+                disabled={ isUnregistrable() || isUnequal(state.formData) }
+              >
                 Register
               </Button>
             </form>

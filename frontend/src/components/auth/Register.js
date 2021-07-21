@@ -1,5 +1,6 @@
 import React from 'react'
 import { registerUser } from '../../lib/api'
+import { useHistory } from 'react-router-dom'
 import { makeStyles } from '@material-ui/core/styles'
 import Box from '@material-ui/core/Box'
 import Button from '@material-ui/core/Button'
@@ -51,12 +52,13 @@ const Register = () => {
     return !(data.password === data.passwordConfirmation)
   }
 
+  const history = useHistory()
+
   const handleSubmit = async event => {
     event.preventDefault()
     try {
       await registerUser(state.formData)
-      // TODO find react hooks equivalent of line below:
-      // this.props.history.push('/login')
+      history.push('/')
     } catch (err) {
       console.log(err)
     }

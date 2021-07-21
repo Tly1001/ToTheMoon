@@ -9,24 +9,10 @@
   margin: 0 10px;
 }
 
+// burger menu
 .burger {
-  cursor: pointer;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  height: 3.25rem;
-  width: 3.25rem;
 
-  //  * Burger menu
   span {
-    display: block;
-    position: relative;
-    width: 33px;
-    height: 4px;
-    margin-bottom: 5px;
-    // z-index: 101;
-
     background: #cdcdcd;
     border-radius: 3px;
 
@@ -38,7 +24,7 @@
 
   }
 
-  // * Burger Transition to X
+  // burger transition to X
   .burger-first-active {
     transform: rotate(45deg) translate(0px, -3px);
     background: #232323;

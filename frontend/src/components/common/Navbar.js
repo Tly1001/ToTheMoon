@@ -34,7 +34,7 @@ const Navbar = () => {
               </svg>
             </button>
 
-            {/* could use this section to link to coins in portfolio */}
+            {/* could use this section to link to coins in portfolio or bookmarks? */}
             <div className={`absolute right-0 w-full mt-2 origin-top-right rounded-md transition-opacity duration-300 ease-in ${!isDropdownOpen ? 'opacity-0 pointer-events-none' : 'shadow'}`}>
               <div className={'px-2 py-2 bg-white rounded-md shadow dark-mode:bg-gray-800 '}>
                 <a className={sidebarItemStyle} href="#">Link #1</a>

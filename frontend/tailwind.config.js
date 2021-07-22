@@ -18,7 +18,18 @@ module.exports = {
       'primaryBlue': '#191970',
       'primaryWhite': '#FFFCF2',
       'primaryGrey': '#706F6F',
+      'burgerGrey': '#cdcdcd',
+      'burgerBlack': '#232323',
     }),
+    scale: {
+      '20': '.2',
+    },
+    translate: {
+      'n2': '-2px',
+    },
+    transformOrigin: {
+      'burger': '4px 0px',
+    },
   },
   variants: {
     extend: {},

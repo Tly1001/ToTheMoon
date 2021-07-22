@@ -8,33 +8,3 @@
   font-size: 14px;
   margin: 0 10px;
 }
-
-// burger menu
-.burger {
-
-  span {
-    background: #cdcdcd;
-    border-radius: 3px;
-
-    transform-origin: 4px 0px;
-
-    transition: transform 0.5s cubic-bezier(0.77, 0.2, 0.05, 1.0),
-      background 0.5s cubic-bezier(0.77, 0.2, 0.05, 1.0),
-      opacity 0.55s ease;
-
-  }
-
-  // burger transition to X
-  .burger-first-active {
-    transform: rotate(45deg) translate(0px, -3px);
-    background: #232323;
-  }
-  .burger-mid-active {
-    opacity: 0;
-    transform: rotate(0deg) scale(0.2, 0.2);
-  }
-  .burger-last-active {
-    transform: rotate(-45deg) translate(0, -2px);
-    background: #232323;
-  }
-}

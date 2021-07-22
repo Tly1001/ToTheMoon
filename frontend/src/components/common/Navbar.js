@@ -13,10 +13,10 @@ const Navbar = () => {
         <div className="flex-shrink-0 px-8 py-4 flex flex-row items-center justify-between">
           <a href="#" className="text-lg font-semibold tracking-widest text-gray-900 uppercase rounded-lg dark-mode:text-white focus:outline-none focus:shadow-outline">To The Moon</a>
           <button className="rounded-lg md:hidden rounded-lg focus:outline-none focus:shadow-outline" onClick={() => setIsNavOpen(!isNavOpen)}>
-            <span className={`burger cursor-pointer flex flex-col justify-center items-center h-14 w-14  ${isNavOpen ? 'is-active' : ''}`} >
-              <span className={`relative block w-33px h-4px mb-5px ${ isNavOpen ? 'burger-first-active' : '' }`}></span>
-              <span className={`relative block w-33px h-4px mb-5px ${ isNavOpen ? 'burger-mid-active' : '' }`}></span>
-              <span className={`relative block w-33px h-4px mb-5px ${ isNavOpen ? 'burger-last-active' : '' }`}></span>
+            <span className={`burger cursor-pointer flex flex-col justify-center items-center rounded h-14 w-14  ${isNavOpen ? 'is-active' : ''}`} >
+              <span className={`relative block rounded bg-burgerGrey transition duration-500 ease-out w-33px h-4px mb-5px origin-burger ${ isNavOpen ? 'bg-burgerBlack transform rotate-45' : '' }`}></span>
+              <span className={`relative block rounded bg-burgerGrey transition duration-500 ease-out w-33px h-4px mb-5px origin-burger ${ isNavOpen ? 'transform scale-20 opacity-0' : '' }`}></span>
+              <span className={`relative block rounded bg-burgerGrey transition duration-500 ease-out w-33px h-4px mb-5px origin-burger ${ isNavOpen ? 'bg-burgerBlack transform -rotate-45 translate-x-n2' : '' }`}></span>
             </span>
           </button>
         </div>
